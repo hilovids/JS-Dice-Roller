@@ -39,7 +39,7 @@ function rollDice(){
         }
     }
     // filter the parsed value list
-    console.log(parsedValueArray);
+    //console.log(parsedValueArray);
     //condense and perform operations
     let toCondense = parsedValueArray;
     while(toCondense.includes("X")){
@@ -162,6 +162,9 @@ function resolveDiceNotation(tuple){
     if(tuple[0] == ""){
         tuple[0] = 1;
     }
+    if(tuple[1] == ""){
+        return 0;
+    }
     for(let i = 0; i < parseInt(tuple[0]); i++){
         runningSum += randomIntFromInterval(1, parseInt(tuple[1]));
     }
@@ -212,6 +215,9 @@ function divide(num, denom){
     num = handleParsedValue(num);
     //console.log(num);
     denom = handleParsedValue(denom);
+    if(denom == 0){
+        return 0;
+    }
     return Math.floor(num / denom);
 }
 
